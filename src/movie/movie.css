@@ -1,0 +1,9 @@
+img {
+    width: 300px;
+    border-radius: 10px;
+}
+.primary-btn {
+    padding: 12px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}

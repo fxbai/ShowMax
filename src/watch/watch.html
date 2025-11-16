@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="../shared/styles.css">
+    <link rel="stylesheet" href="watch.css">
+</head>
+<body>
+
+<button class="back-btn" onclick="nav.go('../movie/movie.html')">← Back</button>
+
+<h1>Watching: Sample Movie Title</h1>
+
+<div class="video-box">Streaming Simulation</div>
+
+<button id="invite-btn" class="primary-btn">Invite Friend to Watch</button>
+
+<div id="invite-popup" class="popup hidden">
+    <p>Friend invited! (Prototype popup)</p>
+    <button onclick="document.getElementById('invite-popup').classList.add('hidden')">
+        Close
+    </button>
+</div>
+
+<script src="watch.js"></script>
+</body>
+</html>
