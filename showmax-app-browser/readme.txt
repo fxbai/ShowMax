@@ -1,1 +1,0 @@
-open home folder for index.html file to run!
