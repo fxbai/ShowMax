@@ -3,8 +3,8 @@ const path = require("path");
 
 function createWindow() {
     const win = new BrowserWindow({
-        width: 1600,
-        height: 900,
+        width: 1550,
+        height: 940,
         webPreferences: {
             preload: path.join(__dirname, "src/shared/nav.js")
         }
