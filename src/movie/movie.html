@@ -1,21 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../shared/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showmax - Movie Details</title>
     <link rel="stylesheet" href="movie.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 <body>
 
-<button class="back-btn" onclick="nav.go('../home/home.html')">← Back</button>
+    <!-- Left sidebar toggle -->
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger"><i class="fas fa-bars"></i></label>
 
-<h1>Sample Movie Title</h1>
-<img src="https://via.placeholder.com/300x450">
+    <!-- Left sidebar -->
+    <div class="sidebar">
+        <div class="menu">
+            <div class="menu-item" onclick="window.location.href='../home/home.html'"><i class="fas fa-home"></i><span>Home</span></div>
+            <div class="menu-item" onclick="window.location.href='../movie/movie.html'"><i class="fas fa-film"></i><span>Movies</span></div>
+            <div class="menu-item" onclick="window.location.href='../show/show.html'"><i class="fas fa-tv"></i><span>Shows</span></div>
+            <div class="menu-item" onclick="window.location.href='../profile/profile.html'"><i class="fas fa-user"></i><span>Profile</span></div>
+        </div>
+    </div>
 
-<p><strong>Rating:</strong> ★★★★☆</p>
-<p><strong>Synopsis:</strong> Lorem ipsum dolor sit amet...</p>
+    <!-- Right socials toggle -->
+    <input type="checkbox" id="socials-toggle">
+    <label for="socials-toggle" class="socials-button"><i class="fas fa-users"></i></label>
 
-<button id="watch-btn" class="primary-btn">Watch Now</button>
+    <!-- Right socials panel -->
+    <div class="socials-panel">
+        <div class="social-header">Friends Online</div>
+        <div class="friend">
+            <span>Alex</span>
+            <div class="friend-options"><i class="fas fa-user"></i><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+        <div class="friend">
+            <span>Jordan</span>
+            <div class="friend-options"><i class="fas fa-user"></i><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    </div>
 
-<script src="movie.js"></script>
+    <!-- Main content -->
+    <div class="content">
+
+        <!-- Topbar -->
+        <div class="topbar">
+             <a href="../home/home.html" class="logo" style="color:white; text-decoration:none;">Showmax</a>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search..." />
+            </div>
+        </div>
+
+        <!-- Movie details -->
+        <div class="movie-details">
+            <button class="back-btn" onclick="window.location.href='../home/home.html'">← Back</button>
+
+            <div class="movie-main">
+                <img id="movie-poster" src="" alt="Movie Poster">
+                <div class="movie-info">
+                    <h1>Movie Title</h1>
+                    <p><strong>Rating:</strong> ★★★★☆</p>
+                    <p><strong>Synopsis:</strong> In a world where technology rules society, upcoming students must struggle through challenging obstacles.
+                         In a human interfaces course, the students were tasked with doing the impossible; building a front-end application. Armed with Redbull and Monster energy drinks,
+                        they faced many hardships. Their fellow students dropped like flies. With little time left, the students must overcome the impossible to achieve the grade they want.
+                        Find out in this epic tale of drama, comedy, and bad HTML container manamgment.</p>
+                    <button id="watch-btn" class="primary-btn">Watch Now</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="movie.js"></script>
 </body>
 </html>
