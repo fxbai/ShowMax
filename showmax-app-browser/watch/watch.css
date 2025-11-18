@@ -1,0 +1,569 @@
+/* Popup */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a2e;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 20;
+    min-width: 250px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.popup.hidden {
+    display: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+    .video-box {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+/* Watch page layout */
+.watch-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.back-btn {
+    padding: 8px 14px;
+    background: #6c6cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.back-btn:hover {
+    background: #8383f3;
+}
+
+/* Video area takes most of the width */
+.video-area {
+    flex: 1;
+}
+
+/* Video box */
+.video-container {
+    position: relative;
+    width: 100%;
+    width: 1000px;
+    flex: 1;
+}
+
+.video-chat-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    position: relative; /* needed for chat-button positioning */
+}
+
+
+.video-box {
+    width: 100%;
+    height: 540px;
+    background: #222237;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Controls overlay */
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.video-container:hover .video-controls {
+    opacity: 1;
+}
+
+.video-controls button,
+.video-controls select {
+    background: #6c6cff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.video-controls input[type="range"] {
+    cursor: pointer;
+}
+
+.video-controls button:hover,
+.video-controls select:hover {
+    background: #8383f3;
+}
+
+
+.seek-bar {
+    width: 100%;
+    height: 6px;
+    -webkit-appearance: none;
+    background: #555;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.seek-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6c6cff;
+    cursor: pointer;
+    margin-top: -4px; /* center thumb */
+}
+
+.control-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+/* Left and Right groups */
+.control-left, .control-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-left button, .control-right button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.control-left input[type=range], .control-right select {
+    cursor: pointer;
+}
+
+
+/* Invite button */
+.primary-btn {
+    padding: 12px 20px;
+    background: #6c6cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: fit-content;
+    font-weight: bold;
+}
+.primary-btn:hover {
+    background: #8383f3;
+}
+
+
+#play-btn {
+    width: 45px;   /* pick a size that fits the largest icon */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.movie-info-section {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 70%;
+    flex-wrap: wrap;   /* allows stacking on smaller screens */
+    padding:30px;
+    background: #222237;
+    border-radius: 8px;
+}
+
+.movie-info-section img {
+    width: 200px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.movie-info-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+.video-preview img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3; /* dim the image */
+}
+
+/* Chat toggle button */
+#chat-toggle {
+    display: none;
+}
+
+.chat-button {
+    position: relative;
+    bottom: 0px;  /* move below the video */
+    right: 0;
+    background: #6c6cff;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Chat toggle button fixed near invite button */
+.button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+/* Chat panel */
+.chat-panel {
+    position: fixed;
+    top:  100px;
+    right: 10px;
+    width: 0;
+    height: 630px;
+    background: #161622;
+    overflow: hidden;
+    transition: width 0.3s ease;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+#chat-toggle:checked ~ .chat-panel {
+    width: 300px;
+    padding: 60px 10px 10px 10px;
+}
+
+/* Chat content */
+.chat-header {
+    font-size: 20px;
+    margin-bottom: 12px;
+    background:#6c6cff ;
+    padding: 6px;
+    border-radius: 6px;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.chat-message {
+    background: #222237;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.chat-input {
+    display: flex;
+    gap: 6px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #2c2c44;
+    color: white;
+}
+
+.chat-input button {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background: #6c6cff;
+    color: white;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background: #8383f3;
+}
+
+
+
+
+
+
+
+
+
+
+
+/*constant styles*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #111;
+    color: white;
+    overflow: hidden;
+}
+
+
+
+
+/*reused*/
+/* sidebar toggle checkbox */
+#menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    font-size: 20px;
+    background: #6c6cff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+}
+.hamburger:hover {
+    background: #8383f3;
+    transition: background 0.2s;
+}
+
+.sidebar {
+  background: #1a1a2e;
+  width: 75px;
+  transition: width 0.3s ease, align-items 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;       /* center icons while collapsed */
+  flex-direction: column;
+  padding-top: 60px;
+  position: relative;
+}
+
+#menu-toggle:checked ~ .sidebar {
+    width: 180px;
+    align-items: stretch;
+}
+
+
+.menu {
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background: #2c2c44;
+}
+
+.menu-item i {
+  min-width: 36px;           /* fixed slot for icon */
+  width: 36px;               /* makes horizontal alignment consistent */
+  height: 36px;
+  display: flex;             /* strongly center the glyph inside the slot */
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.menu-item span {
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  transform: translateX(-6px);
+  display: inline-block;
+  
+}
+
+#menu-toggle:checked ~ .sidebar .menu-item span {
+    opacity: 1;
+      transform: translateX(0);
+}
+
+
+/* Social panel */
+#socials-toggle {
+    display: none;
+}
+
+.socials-button {
+  position: fixed;
+  top: 12px;
+  right: 20px;
+  font-size: 20px;
+  background: #6c6cff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+
+}
+.socials-panel {
+    background: #161622;
+    width: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    padding-top: 60px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 6;
+    white-space: nowrap;
+}
+
+#socials-toggle:checked ~ .socials-panel {
+    width: 260px;
+    padding: 60px 15px;
+}
+
+.social-header {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.friend {
+    background: #222237;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-options i {
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* Content area */
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.topbar {
+    width: calc(100% + 30px); /* add back content padding */
+    display: flex;
+    align-items: center;
+    margin-left: -30px; 
+    height: 65px; 
+    padding: 10px 20px;
+    padding-right: 115px;
+    background: hsl(252, 33%, 18%); 
+    position: sticky;
+    justify-content: space-between;
+    top: 0;
+    z-index: 5;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo:hover {
+    opacity: 1;
+}
+/* Search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #4b4b85;
+    padding: 8px 14px;
+    border-radius: 6px;
+    width: 300px;
+    gap: 10px;
+    z-index: 1;
+}
+
+.search-container i {
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+}
+
+
+input:focus {
+    outline: 2px solid #5f5f9b;  /* subtle blue outline instead of yellow */
+    box-shadow: 0 0 5px rgba(108, 108, 255, 0.5);
+}
+
+
+select:focus {
+    outline: 2px solid #5f5f9b;  /* subtle blue outline instead of yellow */
+    box-shadow: 0 0 5px rgba(108, 108, 255, 0.5);
+}

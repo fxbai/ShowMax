@@ -1,0 +1,241 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #111;
+    color: white;
+    overflow: hidden;
+}
+
+/* sidebar toggle checkbox */
+#menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    font-size: 20px;
+    background: #6c6cff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+}
+.hamburger:hover {
+    background: #8383f3;
+    transition: background 0.2s;
+}
+
+.sidebar {
+  background: #1a1a2e;
+  width: 75px;
+  transition: width 0.3s ease, align-items 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;       /* center icons while collapsed */
+  flex-direction: column;
+  padding-top: 60px;
+  position: relative;
+}
+
+#menu-toggle:checked ~ .sidebar {
+    width: 180px;
+    align-items: stretch;
+}
+
+
+.menu {
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background: #2c2c44;
+}
+
+.menu-item i {
+  min-width: 36px;           /* fixed slot for icon */
+  width: 36px;               /* makes horizontal alignment consistent */
+  height: 36px;
+  display: flex;          
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.menu-item span {
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  transform: translateX(-6px);
+  display: inline-block;
+  
+}
+
+#menu-toggle:checked ~ .sidebar .menu-item span {
+    opacity: 1;
+      transform: translateX(0);
+}
+
+
+/* Social panel */
+#socials-toggle {
+    display: none;
+}
+
+.socials-button {
+  position: fixed;
+  top: 12px;
+  right: 20px;
+  font-size: 20px;
+  background: #6c6cff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+
+}
+.socials-panel {
+    background: #161622;
+    width: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    padding-top: 60px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 6;
+    white-space: nowrap;
+}
+
+#socials-toggle:checked ~ .socials-panel {
+    width: 260px;
+    padding: 60px 15px;
+}
+
+.social-header {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.friend {
+    background: #222237;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-options i {
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* Content area */
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 22px;
+    margin: 20px 0 10px;
+    font-weight: bold;
+}
+
+.carousel {
+    
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 10px;
+    justify-content: center ;
+}
+
+.movie-card {
+    width: 180px;
+    height: 260px;
+    background: #333;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+.topbar {
+    width: calc(100% + 30px);
+    display: flex;
+    align-items: center;
+    margin-left: -30px;
+    height: 65px; 
+    padding: 10px 20px;
+    padding-right: 115px;
+    background: hsl(252, 33%, 18%); 
+    position: sticky;
+    justify-content: space-between;
+    top: 0;
+    z-index: 5;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo:hover {
+    opacity: 1;
+}
+
+
+/* search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #4b4b85;
+    padding: 8px 14px;
+    border-radius: 6px;
+    width: 300px;
+    gap: 10px;
+    z-index: 1;
+}
+
+.search-container i {
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+}
