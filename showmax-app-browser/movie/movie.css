@@ -1,0 +1,371 @@
+/* reuse styles.css for sidebar, socials, topbar */
+
+/* Movie details specific */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Roboto, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #111;
+    color: white;
+    overflow: hidden;
+}
+
+.movie-previews {
+    width: 260px;          /* fixed width on the side */
+    flex-shrink: 0;        
+    display: flex;
+    flex-direction: column; 
+    gap: 8px;
+    max-height: 500px;     /* height limit for scrolling */
+    overflow-y: auto;      /* vertical scroll */
+    overflow-x: hidden;    /* hide horizontal scroll */
+}
+.movie-previews h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+    position: sticky;
+    top: 0;
+    background: #1a1a2e; /* same as container to avoid overlap */
+    padding: 4px 0;
+    z-index: 2;
+}
+
+.previews-carousel {
+    display: flex;
+    flex-direction: column; /* vertical stacking */
+    gap: 10px;
+}
+.previews-carousel img {
+    width: 200px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.previews-carousel img:hover {
+    transform: scale(1.05);
+}
+
+.movie-details {
+    width: 100%;
+    max-width: 1300px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+
+    /*movie description area*/
+.movie-main {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    background: #1a1a2e;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.movie-main img {
+    width: 300px;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.movie-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.movie-info h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.movie-meta p {
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+.movie-meta .trailer-link {
+    color: #6c6cff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.movie-meta .trailer-link:hover {
+    text-decoration: underline;
+}
+
+.movie-synopsis {
+    margin-top: 10px;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.movie-review {
+    background: #222237;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-style: italic;
+    font-size: 14px;
+}
+
+.back-btn {
+    padding: 8px 14px;
+    background: #6c6cff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.back-btn:hover {
+    background: #8383f3;
+}
+
+.primary-btn {
+    padding: 12px 20px;
+    background: #6c6cff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+.primary-btn:hover {
+    background: #8383f3;
+}
+
+
+@media (max-width: 1000px) {
+    .movie-main {
+        flex-direction: column;
+        align-items: center;
+    }
+    .movie-previews {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .previews-carousel {
+        justify-content: flex-start;
+    }
+}
+
+/*reused*/
+/* sidebar toggle checkbox */
+#menu-toggle {
+    display: none;
+}
+
+.hamburger {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    font-size: 20px;
+    background: #6c6cff;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+}
+.hamburger:hover {
+    background: #8383f3;
+    transition: background 0.2s;
+}
+
+.sidebar {
+  background: #1a1a2e;
+  width: 75px;
+  transition: width 0.3s ease, align-items 0.3s ease;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;       /* center icons while collapsed */
+  flex-direction: column;
+  padding-top: 60px;
+  position: relative;
+}
+
+#menu-toggle:checked ~ .sidebar {
+    width: 180px;
+    align-items: stretch;
+}
+
+
+.menu {
+    margin-top: 20px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 16px;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+
+.menu-item:hover {
+    background: #2c2c44;
+}
+
+.menu-item i {
+  min-width: 36px;           
+  width: 36px;               /* makes horizontal alignment consistent */
+  height: 36px;
+  display: flex;             /* strongly center the glyph inside the slot */
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.menu-item span {
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  transform: translateX(-6px);
+  display: inline-block;
+  
+}
+
+#menu-toggle:checked ~ .sidebar .menu-item span {
+    opacity: 1;
+      transform: translateX(0);
+}
+
+
+/* Social panel */
+#socials-toggle {
+    display: none;
+}
+
+.socials-button {
+  position: fixed;
+  top: 12px;
+  right: 20px;
+  font-size: 20px;
+  background: #6c6cff;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10;
+  color: white;
+
+}
+.socials-panel {
+    background: #161622;
+    width: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    padding-top: 60px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100%;
+    z-index: 6;
+    white-space: nowrap;
+}
+
+#socials-toggle:checked ~ .socials-panel {
+    width: 260px;
+    padding: 60px 15px;
+}
+
+.social-header {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.friend {
+    background: #222237;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.friend-options i {
+    cursor: pointer;
+    margin-left: 8px;
+}
+
+/* Content area */
+.content {
+    flex: 1;
+    overflow-y: auto;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+.topbar {
+    width: calc(100% + 30px); 
+    display: flex;
+    align-items: center;
+    margin-left: -30px; 
+    height: 65px; 
+    padding: 10px 20px;
+    padding-right: 115px;
+    background: hsl(252, 33%, 18%); 
+    position: sticky;
+    justify-content: space-between;
+    top: 0;
+    z-index: 5;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.logo:hover {
+    opacity: 1;
+}
+/* Search bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #4b4b85;
+    padding: 8px 14px;
+    border-radius: 6px;
+    width: 300px;
+    gap: 10px;
+    z-index: 1;
+}
+
+.search-container i {
+    font-size: 16px;
+    opacity: 0.6;
+}
+
+.search-container input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    width: 100%;
+}
